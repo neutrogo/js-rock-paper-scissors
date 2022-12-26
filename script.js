@@ -34,9 +34,9 @@ function getChoiceLogic(choice) {
    }
 }
 
-function rockPaperScissors() {
-    let computerChoiceLogic = getChoiceLogic(getComputerChoice());
-    let playerChoiceLogic = getChoiceLogic(getPlayerChoice().toLowerCase());
+function playRound() {
+    const computerChoiceLogic = getChoiceLogic(getComputerChoice());
+    const playerChoiceLogic = getChoiceLogic(getPlayerChoice().toLowerCase());
     gameLogic(playerChoiceLogic, computerChoiceLogic);
 }
 
@@ -79,4 +79,11 @@ function gameLogic(player, com) {
     }
 }
 
-rockPaperScissors();
+function game() {
+    for(let i = 0; i < 5; i++)
+    {
+        playRound();
+    }
+}
+
+game();
