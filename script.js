@@ -70,9 +70,9 @@ function gameLogic(player, com) {
 }
 
 function game(choice) {
-    
-        let gameResult = playRound(choice);
-        appendResult(gameResult);
+    let gameResult = playRound(choice);
+    appendResult(gameResult);
+    updateScore(gameResult);
 }
 
 const choiceButtons = document.querySelectorAll('button');
@@ -87,4 +87,31 @@ function selectOption(e) {
 function appendResult(gameResult) {
     const resultBlock = document.querySelector('.result')
     resultBlock.innerText = "Result:\n" + gameResult;
+}
+
+function updateScore(gameResult) {
+    playerScore = document.querySelector('.playerScore');
+    compScore = document.querySelector('.compScore');
+    if(gameResult.includes("You Win!"))
+    {
+        playerScore.innerText = +playerScore.innerText + 1;
+    }
+    if(gameResult.includes("You Lose!"))
+    {
+        compScore.innerText = +compScore.innerText + 1;
+    }
+    checkWinner(playerScore, compScore);
+}
+
+function checkWinner(playerScore, compScore) {
+    if(playerScore.innerText === '5')
+    {
+        const winner = document.querySelector('.winner');
+        winner.innerText = 'The Player Wins!';
+    }
+    if(compScore.innerText === '5')
+    {
+        const winner = document.querySelector('.winner');
+        winner.innerText = "The Computer Wins!";
+    }
 }
