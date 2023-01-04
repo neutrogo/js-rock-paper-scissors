@@ -37,7 +37,7 @@ function getChoiceLogic(choice) {
 function playRound(choice) {
     const computerChoiceLogic = getChoiceLogic(getComputerChoice());
     const playerChoiceLogic = getChoiceLogic(choice);
-    gameLogic(playerChoiceLogic, computerChoiceLogic);
+    return gameLogic(playerChoiceLogic, computerChoiceLogic);
 }
 
 // potentially convert choice strings to numbers here? can insert the
@@ -46,46 +46,36 @@ function gameLogic(player, com) {
     let choices = [player, com];
     choices = choices.join(",");
 
-    // if the player input is invalid
-    if(player === 0) {
-        console.log("Invalid Input, please enter 'Rock', 'Paper', or 'Scissors'")
-    }
-    else if (player === com) {
-        console.log("Draw!")
+    if (player === com) {
+        return ("Draw!")
     }
     else {
         switch (choices) {
             // player loses
             case "1,2":
-                console.log("You Lose! Paper beats Rock");
-                break;
+                return("You Lose! Paper beats Rock");
             case "2,3":
-                console.log("You Lose! Scissors beat Paper");
-                break;
+                return("You Lose! Scissors beat Paper");
             case "3,1":
-                console.log("You Lose! Rock beats Scissors");
-                break;
+                return("You Lose! Rock beats Scissors");
             // player wins
             case "2,1":
-                console.log("You Win! Paper beats Rock");
-                break;
+                return("You Win! Paper beats Rock");
             case "3,2":
-                console.log("You Win! Scissors beat Paper");
-                break;
+                return("You Win! Scissors beat Paper");
             case "1,3":
-                console.log("You Win! Rock beats Scissors");
-                break;
+                return("You Win! Rock beats Scissors");
         }
     }
 }
 
 function game(choice) {
     
-        playRound(choice);
+        let gameResult = playRound(choice);
+        appendResult(gameResult);
 }
 
 const choiceButtons = document.querySelectorAll('button');
-//choiceButtons.addEventListener('click', selectOption);
 choiceButtons.forEach((button) => {button.addEventListener('click', selectOption);});
 
 function selectOption(e) {
@@ -94,3 +84,7 @@ function selectOption(e) {
     game(choice);
 }
 
+function appendResult(gameResult) {
+    const resultBlock = document.querySelector('.result')
+    resultBlock.innerText = "Result:\n" + gameResult;
+}
