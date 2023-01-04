@@ -34,9 +34,9 @@ function getChoiceLogic(choice) {
    }
 }
 
-function playRound() {
+function playRound(choice) {
     const computerChoiceLogic = getChoiceLogic(getComputerChoice());
-    const playerChoiceLogic = getChoiceLogic(getPlayerChoice().toLowerCase());
+    const playerChoiceLogic = getChoiceLogic(choice);
     gameLogic(playerChoiceLogic, computerChoiceLogic);
 }
 
@@ -79,11 +79,18 @@ function gameLogic(player, com) {
     }
 }
 
-function game() {
-    for(let i = 0; i < 5; i++)
-    {
-        playRound();
-    }
+function game(choice) {
+    
+        playRound(choice);
 }
 
-game();
+const choiceButtons = document.querySelectorAll('button');
+//choiceButtons.addEventListener('click', selectOption);
+choiceButtons.forEach((button) => {button.addEventListener('click', selectOption);});
+
+function selectOption(e) {
+    console.log(e);
+    let choice = e.currentTarget.className;
+    game(choice);
+}
+
