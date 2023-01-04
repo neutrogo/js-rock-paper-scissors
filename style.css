@@ -1,0 +1,35 @@
+div {
+    display: flex;
+    flex-basis: 100px;
+    background-color: yellow;
+}
+
+.score {
+    display: flex;
+    flex-basis: content;
+    width: 300px;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.result {
+    display: flex;
+    flex-basis: content;
+    width: 300px;
+    height: 20px;
+}
+
+.game-result {
+    display: flex;
+    flex-basis: content;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.winner {
+    display: flex;
+    background-color: yellow;
+    width: 300px;
+}

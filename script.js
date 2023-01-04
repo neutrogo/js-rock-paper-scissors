@@ -85,8 +85,8 @@ function selectOption(e) {
 }
 
 function appendResult(gameResult) {
-    const resultBlock = document.querySelector('.result')
-    resultBlock.innerText = "Result:\n" + gameResult;
+    const resultBlock = document.querySelector('.game-result')
+    resultBlock.innerText = " " + gameResult;
 }
 
 function updateScore(gameResult) {
@@ -108,10 +108,12 @@ function checkWinner(playerScore, compScore) {
     {
         const winner = document.querySelector('.winner');
         winner.innerText = 'The Player Wins!';
+        choiceButtons.forEach((button) => {button.removeEventListener('click', selectOption);});
     }
     if(compScore.innerText === '5')
     {
         const winner = document.querySelector('.winner');
         winner.innerText = "The Computer Wins!";
+        choiceButtons.forEach((button) => {button.removeEventListener('click', selectOption);});
     }
 }
